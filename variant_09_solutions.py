@@ -4,7 +4,6 @@
 Студент: Панков Максим
 Група: номер 2
 """
-
 # Задача 1: Пріоритет команд авіоніки (dict.get)
 def get_command_priority(cmd_code: str) -> str:
     """
@@ -56,12 +55,16 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
         P=P+I*U*dt
         print(P)
     return P
+print("Задача 1:")
 cmd_code=input('Введіть назву команди:')
 print(get_command_priority(cmd_code))
+print("Задача 2:")
 data=(int(input("Введіть номер ID тяги двигуна:")),float(input("Введіть значення кута нахилу:")),float(input("Введіть значення кута повороту:")))
 print(decode_thrust_vector(data))
+print("Задача 3:")
 v0=5000
 print(simulate_mars_entry(v0))
+print("Задача 4:")
 i_list=list(map(float,input("Введіть виміри струму:").split()))
 u_list=list(map(float,input("Введіть виміри напруги:").split()))
 dt=0.1
