@@ -42,6 +42,15 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
     """
     Обчислює повну спожиту енергію P = sum(I_i * U_i) * dt за допомогою zip.
     """
-    ...
+    P=0
+    for I, U in zip(i_list, u_list):
+        print(I,U)
+        P=P+I*U*dt
+        print(P)
+    return P
 v0=5000
 print(simulate_mars_entry(v0))
+i_list=list(map(float,input("Введіть виміри струму:").split()))
+u_list=list(map(float,input("Введіть виміри напруги:").split()))
+dt=0.1
+print(calculate_consumed_energy(i_list, u_list, dt))
