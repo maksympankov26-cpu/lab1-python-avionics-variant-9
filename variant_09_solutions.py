@@ -20,8 +20,13 @@ def decode_thrust_vector(data: tuple) -> str:
     - pitch == 0, yaw == 0 -> "Двигун {id}: Тяга за осі умовної нейтралі"
     - engine_id in (1, 2) -> "Основний двигун {id} у маневрі (p={pitch}, y={yaw})"
     """
-    ...
-
+    match data:
+        case (engine_id, 0,0):
+            return f"Двигун {engine_id}: Тяга за осі умовної нейтралі"
+        case (1|2 as engine_id, pitch_angle, yaw_angle):
+            return f"Основний двигун {engine_id} у маневрі (p={pitch_angle}, y={yaw_angle})"
+        case (engine_id,pitch_angle,yaw_angle):
+            return f"Двигун {engine_id} у маневрі (p={pitch_angle}, y={yaw_angle})"
 # Задача 3: Гальмування в атмосфері Марса (while / break)
 def simulate_mars_entry(v0: float) -> tuple:
     """
@@ -48,6 +53,8 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
         P=P+I*U*dt
         print(P)
     return P
+data=(int(input("Введіть номер ID тяги двигуна:")),float(input("Введіть значення кута нахилу:")),float(input("Введіть значення кута повороту:")))
+print(decode_thrust_vector(data))
 v0=5000
 print(simulate_mars_entry(v0))
 i_list=list(map(float,input("Введіть виміри струму:").split()))
