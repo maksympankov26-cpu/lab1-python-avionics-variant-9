@@ -1,1 +1,0 @@
-# lab1-python-avionics-variant-9
