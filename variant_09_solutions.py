@@ -4,15 +4,17 @@
 Студент: Панков Максим
 Група: номер 2
 """
-
 # Задача 1: Пріоритет команд авіоніки (dict.get)
 def get_command_priority(cmd_code: str) -> str:
     """
     Шукає код команди у словнику пріоритетів.
     За допомогою методу .get() повертає "Невідома команда: пріоритет 0", якщо код відсутній.
     """
-    ...
-
+    branch=dict(autopilot=1, engine_shutdown=2,display_turn_on=3)
+    branch.get(cmd_code,"Невідома команда: пріоритет 0")
+    if isinstance(branch.get(cmd_code,"Невідома команда: пріоритет 0"),int):
+        return f'{cmd_code}: пріоритет {branch.get(cmd_code,"Невідома команда: пріоритет 0")}'
+    return branch.get(cmd_code,"Невідома команда: пріоритет 0")
 # Задача 2: Вектор тяги двигунів (match-case)
 def decode_thrust_vector(data: tuple) -> str:
     """
@@ -53,10 +55,16 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
         P=P+I*U*dt
         print(P)
     return P
+print("Задача 1:")
+cmd_code=input('Введіть назву команди:')
+print(get_command_priority(cmd_code))
+print("Задача 2:")
 data=(int(input("Введіть номер ID тяги двигуна:")),float(input("Введіть значення кута нахилу:")),float(input("Введіть значення кута повороту:")))
 print(decode_thrust_vector(data))
+print("Задача 3:")
 v0=5000
 print(simulate_mars_entry(v0))
+print("Задача 4:")
 i_list=list(map(float,input("Введіть виміри струму:").split()))
 u_list=list(map(float,input("Введіть виміри напруги:").split()))
 dt=0.1
