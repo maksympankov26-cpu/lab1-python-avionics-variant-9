@@ -51,9 +51,7 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
     """
     P=0
     for I, U in zip(i_list, u_list):
-        print(I,U)
         P=P+I*U*dt
-        print(P)
     return P
 print("Задача 1:")
 cmd_code=input('Введіть назву команди:')
