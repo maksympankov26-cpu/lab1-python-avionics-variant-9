@@ -37,7 +37,7 @@ def simulate_mars_entry(v0: float) -> tuple:
     Повертає кортеж (кінцева_швидкість, час_t).
     """
     t=0
-    while True:
+    while v0>100 and t<120:
         v0=v0*0.92
         t+=1
         if v0<=100 or t>120:
