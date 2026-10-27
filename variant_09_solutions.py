@@ -37,7 +37,7 @@ def simulate_mars_entry(v0: float) -> tuple:
     Повертає кортеж (кінцева_швидкість, час_t).
     """
     t=0
-    while True:
+    while v0>100 and t<120:
         v0=v0*0.92
         t+=1
         if v0<=100 or t>120:
@@ -51,9 +51,7 @@ def calculate_consumed_energy(i_list: list, u_list: list, dt: float = 0.1) -> fl
     """
     P=0
     for I, U in zip(i_list, u_list):
-        print(I,U)
         P=P+I*U*dt
-        print(P)
     return P
 print("Задача 1:")
 cmd_code=input('Введіть назву команди:')
